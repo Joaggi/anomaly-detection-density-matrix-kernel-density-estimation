@@ -95,3 +95,4 @@ venv/Scripts
 mlflow/**/*.*
 mlflow/**/*.dvc
 
+/data
