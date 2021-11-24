@@ -1,5 +1,6 @@
 current_path = ""
 
+
 try:  
     import google.colab
     IN_COLAB = True
@@ -25,18 +26,14 @@ print(os.getcwd())
 
 sys.path.append('scripts/')
 
+
 from mlflow_create_experiment import mlflow_create_experiment
 
-from sklearn.metrics import accuracy_score
-from sklearn.preprocessing import MinMaxScaler
 import tensorflow as tf
 
 import sklearn
 import numpy as np # linear algebra
 import pandas as pd # data processing, CSV file I/O (e.g. pd.read_csv)
-import keras
-from keras.wrappers.scikit_learn import KerasClassifier
-from sklearn.model_selection import RandomizedSearchCV, KFold
 
 from experiments import experiments
 
@@ -46,9 +43,9 @@ setting = {
     "z_n_components": 1000,
     "z_tol": 1e-05, 
     "z_max_iter": 20000,
-    "z_step": "train_val",
     "z_dataset": "arrhythmia",
-    "z_test_running_times": 10
+    "z_test_running_times": 10,
+    "z_labels": [0,1]
 }
 
 #prod_settings = {"z_gamma" : [2**i for i in range(-20,10)], "z_C": [2**i for i in range(-20,10)]}
