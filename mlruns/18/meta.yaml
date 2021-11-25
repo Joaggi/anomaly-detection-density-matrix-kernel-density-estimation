@@ -1,0 +1,4 @@
+artifact_location: mlflow/
+experiment_id: '18'
+lifecycle_stage: active
+name: localoutlier-spambase
