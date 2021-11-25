@@ -16,7 +16,8 @@ def experiment_oneclass(X_train, y_train, X_test, y_test, settings, mlflow):
         print(f"experiment_dmkdc {i} setting {setting}")
         with mlflow.start_run(run_name=setting["z_run_name"]):
 
-            model = OneClassSVM(kernel="rbf")
+            model = OneClassSVM(kernel="rbf", gamma=setting["z_gamma"], 
+                                nu=setting["z_nu"], tol=setting["z_tol"])
             model.fit(X_train)
             y_test_pred = model.predict(X_test)
             
