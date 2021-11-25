@@ -1,0 +1,4 @@
+artifact_location: mlflow/
+experiment_id: '13'
+lifecycle_stage: active
+name: covariance-spambase
