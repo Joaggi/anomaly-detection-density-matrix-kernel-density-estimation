@@ -3,9 +3,8 @@ import matplotlib.pyplot as plt
 
 from sklearn.svm import OneClassSVM
 
-from sklearn.metrics import roc_auc_score, roc_curve, auc
-from sklearn.experimental import enable_halving_search_cv  # noqa
-from sklearn.model_selection import HalvingGridSearchCV
+#from sklearn.experimental import enable_halving_search_cv  # noqa
+#from sklearn.model_selection import HalvingGridSearchCV
 
 from calculate_metrics import calculate_metrics
 
