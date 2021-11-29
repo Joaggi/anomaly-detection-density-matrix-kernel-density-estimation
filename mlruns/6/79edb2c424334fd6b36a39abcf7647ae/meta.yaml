@@ -1,0 +1,15 @@
+artifact_uri: mlflow/79edb2c424334fd6b36a39abcf7647ae/artifacts
+end_time: 1638147874242
+entry_point_name: ''
+experiment_id: '6'
+lifecycle_stage: active
+name: ''
+run_id: 79edb2c424334fd6b36a39abcf7647ae
+run_uuid: 79edb2c424334fd6b36a39abcf7647ae
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1638147873525
+status: 3
+tags: []
+user_id: root

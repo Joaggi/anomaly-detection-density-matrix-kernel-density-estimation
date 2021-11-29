@@ -1,0 +1,15 @@
+artifact_uri: mlflow/cea19cbc1a574de69506be374513f707/artifacts
+end_time: 1638145843120
+entry_point_name: ''
+experiment_id: '3'
+lifecycle_stage: active
+name: ''
+run_id: cea19cbc1a574de69506be374513f707
+run_uuid: cea19cbc1a574de69506be374513f707
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1638145842554
+status: 3
+tags: []
+user_id: root

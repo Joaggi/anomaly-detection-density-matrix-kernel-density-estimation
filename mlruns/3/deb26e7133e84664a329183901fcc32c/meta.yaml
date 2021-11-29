@@ -1,0 +1,15 @@
+artifact_uri: mlflow/deb26e7133e84664a329183901fcc32c/artifacts
+end_time: 1638145908209
+entry_point_name: ''
+experiment_id: '3'
+lifecycle_stage: active
+name: ''
+run_id: deb26e7133e84664a329183901fcc32c
+run_uuid: deb26e7133e84664a329183901fcc32c
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1638145907527
+status: 3
+tags: []
+user_id: root

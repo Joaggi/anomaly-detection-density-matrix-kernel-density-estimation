@@ -40,13 +40,18 @@ setting = {
     "z_name_of_experiment": 'isolation-spambase',
     "z_run_name": "isolation",
     "z_dataset": "spambase", 
-    "z_labels": [1,-1]
+    "z_pos_label": 1,
+    "z_neg_label": -1,
+    "z_select_best_experiment": True
 }
 
-#prod_settings = {"z_gamma" : [2**i for i in range(-20,10)], "z_C": [2**i for i in range(-20,10)]}
-prod_settings = {"z_n_estimators": [50], "z_max_samples" : [10], "z_nu": [0.1]}
+prod_settings = {
+    "z_n_estimators": [20*i for i in range(1,6)], 
+    "z_max_samples" : [20*i for i in range(1,6)], 
+    "z_nu": [i/50 for i in range(1,21)]
+}
 
-params_int = ["z_n_estimators", "z_max_samples"]
+params_int = ["z_pos_label", "z_neg_label", "z_n_estimators", "z_max_samples"]
 params_float = ["z_nu"]
 
 mlflow = mlflow_create_experiment(setting["z_name_of_experiment"])

@@ -46,7 +46,7 @@ setting = {
     "z_select_best_experiment": True
 }
 
-prod_settings = {"z_gamma" : [2**i for i in range(-10,5)], "z_nu": [i/20 for i in range(1,10)]}
+prod_settings = {"z_gamma" : [2**i for i in range(-10,5)], "z_nu": [i/50 for i in range(1,21)]}
 #prod_settings = {"z_gamma" : [0.1], "z_nu": [0.1]}
 
 params_int = ["z_pos_label", "z_neg_label"]
