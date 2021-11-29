@@ -29,3 +29,8 @@ def generate_product_dict(original_dict, product_dict):
 def add_random_state_to_dict(list_original_dict):
 
     return [dict(original_dict, **{"z_random_state": 42}) for _, original_dict in enumerate(list_original_dict)]
+
+
+def generate_dict_with_random_state(original_dict):
+    
+    return [dict(original_dict, **{"z_random_state": 42})]

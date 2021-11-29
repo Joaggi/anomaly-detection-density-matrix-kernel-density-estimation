@@ -1,4 +1,0 @@
-artifact_location: mlflow/
-experiment_id: '3'
-lifecycle_stage: active
-name: oneclass-spambase

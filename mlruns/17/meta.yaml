@@ -1,4 +1,0 @@
-artifact_location: mlflow/
-experiment_id: '17'
-lifecycle_stage: active
-name: localoutlier-cardio

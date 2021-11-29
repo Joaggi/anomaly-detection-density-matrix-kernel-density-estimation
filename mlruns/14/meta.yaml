@@ -1,4 +1,0 @@
-artifact_location: mlflow/
-experiment_id: '14'
-lifecycle_stage: active
-name: covariance-thyroid
