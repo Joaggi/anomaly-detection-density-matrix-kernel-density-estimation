@@ -3,8 +3,6 @@ import matplotlib.pyplot as plt
 
 from sklearn.ensemble import IsolationForest
 
-#from sklearn.experimental import enable_halving_search_cv  # noqa
-#from sklearn.model_selection import HalvingGridSearchCV
 
 from calculate_metrics import calculate_metrics
 
@@ -21,9 +19,6 @@ def experiment_isolation(X_train, y_train, X_test, y_test, settings, mlflow):
             y_test_pred = model.predict(X_test)
             
             y_test = y_test.flatten()
-            y_test_pred[ y_test_pred == 1 ] = setting["z_pos_label"]
-            y_test_pred[ y_test_pred == -1 ] = setting["z_neg_label"]           
-
             metrics = calculate_metrics(y_test, y_test_pred)
 
             mlflow.log_params(setting)

@@ -13,32 +13,25 @@ def experiments(setting, prod_settings, params_int, params_float, mlflow):
     dataset = setting["z_dataset"]
     name_of_experiment = setting["z_name_of_experiment"]
 
-    X_train, y_train, X_test, y_test = load_dataset(dataset)
+    X_train, y_train, X_test, y_test = load_dataset(dataset, setting)
+
+    X_train, X_val, y_train, y_val = train_test_split(X_train, y_train, test_size=0.3, random_state=42, stratify=y_train)
+
+    X_train, X_val, X_test = min_max_scaler(X_train, X_val, X_test)
 
     print("shape X_train : ", X_train.shape)
-    print("shape y_train : ", y_train.shape)
+    print("shape X_val : ", X_val.shape)
     print("shape X_test : ", X_test.shape)
-    print("shape y_test : ", y_test.shape)
-
-
-    #X_train, X_val, y_train, y_val = train_test_split(X_train, y_train, test_size=0.2, random_state=42, stratify=y_train)
-
-    X_train, X_test = min_max_scaler(X_train, X_test)
-
-    print(X_train.shape)
-    print(y_train.shape)
-    print(X_test.shape)
-    print(y_test.shape)
 
 
     settings = generate_product_dict(setting, prod_settings)
     settings = add_random_state_to_dict(settings)
 
-    make_experiment(algorithm, X_train, y_train, X_test, y_test, settings, mlflow)
+    make_experiment(algorithm, X_train, y_train, X_val, y_val, settings, mlflow)
+
 
     experiments_list = mlflow.get_experiment_by_name(name_of_experiment)
     experiment_id = experiments_list.experiment_id
-    print(experiment_id)
 
     if "z_select_best_experiment" in setting and setting["z_select_best_experiment"] == True:
 
@@ -50,4 +43,5 @@ def experiments(setting, prod_settings, params_int, params_float, mlflow):
         settings_test = generate_dict_with_random_state(best_experiment)
 
         print("Best Experiment:") 
-        make_experiment(algorithm, X_train, y_train, X_test, y_test, settings_test, mlflow)
+        make_experiment(algorithm, np.concatenate([X_train, X_val]), np.concatenate([y_train, y_val]), 
+                        X_test, y_test, settings_test, mlflow)
