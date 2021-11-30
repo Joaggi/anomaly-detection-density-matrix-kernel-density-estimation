@@ -12,7 +12,7 @@ def experiment_covariance(X_train, y_train, X_test, y_test, settings, mlflow):
     
     for i, setting in enumerate(settings):
 
-        print(f"experiment_dmkdc {i} setting {setting}")
+        #print(f"experiment_dmkdc {i} setting {setting}")
         with mlflow.start_run(run_name=setting["z_run_name"]):
 
             model = EllipticEnvelope(contamination=setting["z_nu"], random_state=setting["z_random_state"])
@@ -20,8 +20,8 @@ def experiment_covariance(X_train, y_train, X_test, y_test, settings, mlflow):
             y_test_pred = model.predict(X_test)
             
             y_test = y_test.flatten()
-            y_test_pred[ y_test_pred == 1 ] = setting["z_labels"][0]
-            y_test_pred[ y_test_pred == -1 ] = setting["z_labels"][1]            
+            y_test_pred[ y_test_pred == 1 ] = setting["z_pos_label"]
+            y_test_pred[ y_test_pred == -1 ] = setting["z_neg_label"]            
 
             metrics = calculate_metrics(y_test, y_test_pred)
 
