@@ -40,14 +40,12 @@ setting = {
     "z_name_of_experiment": 'localoutlier-arrhythmia',
     "z_run_name": "localoutlier",
     "z_dataset": "arrhythmia",
-    "z_pos_label": 0,
-    "z_neg_label": 1,
     "z_select_best_experiment": True
 }
 
-prod_settings = {"z_n_neighbors" : [2*i for i in range(1,26)], "z_nu": [i/50 for i in range(1,21)]}
+prod_settings = {"z_n_neighbors" : [2*i for i in range(1,26)], "z_nu": [i/50 for i in range(1,16)]}
 
-params_int = ["z_pos_label", "z_neg_label", "z_n_neighbors"]
+params_int = ["z_n_neighbors"]
 params_float = ["z_nu"]
 
 mlflow = mlflow_create_experiment(setting["z_name_of_experiment"])

@@ -3,10 +3,8 @@ import matplotlib.pyplot as plt
 
 from sklearn.neighbors import LocalOutlierFactor
 
-#from sklearn.experimental import enable_halving_search_cv  # noqa
-#from sklearn.model_selection import HalvingGridSearchCV
-
 from calculate_metrics import calculate_metrics
+
 
 def experiment_lof(X_train, y_train, X_test, y_test, settings, mlflow):
     
@@ -18,10 +16,6 @@ def experiment_lof(X_train, y_train, X_test, y_test, settings, mlflow):
             model = LocalOutlierFactor(n_neighbors=setting["z_n_neighbors"], contamination=setting["z_nu"], novelty=True)
             model.fit(X_train)
             y_test_pred = model.predict(X_test)
-            
-            y_test = y_test.flatten()
-            y_test_pred[ y_test_pred == 1 ] = setting["z_pos_label"]
-            y_test_pred[ y_test_pred == -1 ] = setting["z_neg_label"]            
 
             metrics = calculate_metrics(y_test, y_test_pred)
 

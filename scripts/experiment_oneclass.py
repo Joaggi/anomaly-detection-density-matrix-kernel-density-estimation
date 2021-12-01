@@ -1,10 +1,8 @@
 import numpy as np
-import matplotlib.pyplot as plt
-
 from sklearn.svm import OneClassSVM
 
-
 from calculate_metrics import calculate_metrics
+
 
 def experiment_oneclass(X_train, y_train, X_test, y_test, settings, mlflow):
     
@@ -17,8 +15,7 @@ def experiment_oneclass(X_train, y_train, X_test, y_test, settings, mlflow):
                                 nu=setting["z_nu"], tol=setting["z_tol"])
             model.fit(X_train)
             y_test_pred = model.predict(X_test)
-            
-            y_test = y_test.flatten()     
+    
             metrics = calculate_metrics(y_test, y_test_pred)
 
             mlflow.log_params(setting)
