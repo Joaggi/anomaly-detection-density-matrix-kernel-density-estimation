@@ -40,11 +40,10 @@ setting = {
     "z_name_of_experiment": 'localoutlier-kddcup',
     "z_run_name": "localoutlier",
     "z_dataset": "kddcup",
-    "z_labels": [1,-1]
+    "z_select_best_experiment": True
 }
 
-#prod_settings = {"z_gamma" : [2**i for i in range(-20,10)], "z_C": [2**i for i in range(-20,10)]}
-prod_settings = {"z_n_neighbors": [10], "z_nu": [0.1]}
+prod_settings = {"z_n_neighbors" : [2*i for i in range(1,26)], "z_nu": [i/50 for i in range(1,16)]}
 
 params_int = ["z_n_neighbors"]
 params_float = ["z_nu"]

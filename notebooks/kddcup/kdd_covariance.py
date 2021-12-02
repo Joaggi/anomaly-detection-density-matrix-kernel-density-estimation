@@ -9,9 +9,6 @@ except:
 
 if IN_COLAB:
     import os
-    os.system("pip3 install mlflow")
-    from google.colab import drive
-    drive.mount('/content/drive')
     import sys
     sys.path.append('submodules/qmc/')
     print(sys.path)
@@ -40,11 +37,12 @@ setting = {
     "z_name_of_experiment": 'covariance-kddcup',
     "z_run_name": "covariance",
     "z_dataset": "kddcup", 
-    "z_labels": [1,-1]
+    "z_select_best_experiment": True
 }
 
-#prod_settings = {"z_gamma" : [2**i for i in range(-20,10)], "z_C": [2**i for i in range(-20,10)]}
-prod_settings = {"z_nu": [0.1]}
+prod_settings = {
+    "z_nu": [i/100 for i in range(1,31)]
+}
 
 params_int = []
 params_float = ["z_nu"]

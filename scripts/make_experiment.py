@@ -1,3 +1,4 @@
+from experiment_dmkde import experiment_dmkde
 from experiment_lof import experiment_lof
 from experiment_oneclass import experiment_oneclass
 from experiment_isolation import experiment_isolation
@@ -13,3 +14,5 @@ def make_experiment(algorithm, X_train, y_train, X_test, y_test, settings, mlflo
         experiment_covariance(X_train, y_train, X_test, y_test, settings, mlflow)
     if algorithm == "localoutlier":
         experiment_lof(X_train, y_train, X_test, y_test, settings, mlflow)
+    if algorithm == "dmkde":
+        experiment_dmkde(X_train, y_train, X_test, y_test, settings, mlflow)
