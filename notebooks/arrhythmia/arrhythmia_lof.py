@@ -9,9 +9,6 @@ except:
 
 if IN_COLAB:
     import os
-    os.system("pip3 install mlflow")
-    from google.colab import drive
-    drive.mount('/content/drive')
     import sys
     sys.path.append('submodules/qmc/')
     print(sys.path)

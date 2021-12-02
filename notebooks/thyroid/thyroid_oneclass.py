@@ -9,9 +9,6 @@ except:
 
 if IN_COLAB:
     import os
-    os.system("pip3 install mlflow")
-    from google.colab import drive
-    drive.mount('/content/drive')
     import sys
     sys.path.append('submodules/qmc/')
     print(sys.path)
@@ -41,15 +38,13 @@ setting = {
     "z_run_name": "oneclass",
     "z_dataset": "thyroid",
     "z_tol": 1e-05, 
-    "z_pos_label": 0,
-    "z_neg_label": 1,
     "z_select_best_experiment": True
 }
 
-prod_settings = {"z_gamma" : [2**i for i in range(-10,5)], "z_nu": [i/50 for i in range(1,21)]}
+prod_settings = {"z_gamma" : [2**i for i in range(-10,5)], "z_nu": [i/50 for i in range(1,16)]}
 #prod_settings = {"z_gamma" : [0.1], "z_nu": [0.1]}
 
-params_int = ["z_pos_label", "z_neg_label"]
+params_int = []
 params_float = ["z_tol","z_gamma", "z_nu"]
 
 mlflow = mlflow_create_experiment(setting["z_name_of_experiment"])

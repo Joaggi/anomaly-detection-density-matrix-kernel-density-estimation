@@ -15,7 +15,7 @@ def experiment_oneclass(X_train, y_train, X_test, y_test, settings, mlflow):
                                 nu=setting["z_nu"], tol=setting["z_tol"])
             model.fit(X_train)
             y_test_pred = model.predict(X_test)
-    
+        
             metrics = calculate_metrics(y_test, y_test_pred)
 
             mlflow.log_params(setting)
