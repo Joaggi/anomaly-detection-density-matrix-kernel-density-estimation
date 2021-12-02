@@ -41,7 +41,7 @@ setting = {
 }
 
 prod_settings = {
-    "z_nu": [i/100 for i in range(1,31)]
+    "z_nu": [i/500 for i in range(1,31)]
 }
 
 params_int = []

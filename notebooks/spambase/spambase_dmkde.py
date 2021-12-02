@@ -40,9 +40,9 @@ from mlflow_create_experiment import mlflow_create_experiment
 
 
 setting = {
-    "z_name_of_experiment": 'dmkde_cardio',
+    "z_name_of_experiment": 'dmkde_spambase',
     "z_run_name": "dmkde",
-    "z_dataset": "cardio",
+    "z_dataset": "spambase",
     "z_rff_components": 1000,
     "z_batch_size": 8,
     "z_select_best_experiment": True,
