@@ -17,7 +17,6 @@ def calculate_eigs(X_train, setting, i):
                                gamma=setting["z_gamma"], random_state=setting["z_random_state"])
     eig_vals = qmd2.set_rho(rho)
     opt_num_eigs = ( (np.asarray(eig_vals)) > 0.005 ).sum()
-    print(eig_vals)
 
     if opt_num_eigs > 10:
         print(f"experiment_dmkdc {i} num_eigs {opt_num_eigs}")    
