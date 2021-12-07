@@ -4,6 +4,7 @@ from experiment_lof import experiment_lof
 from experiment_oneclass import experiment_oneclass
 from experiment_isolation import experiment_isolation
 from experiment_covariance import experiment_covariance
+from experiment_lake import experiment_lake
 
 def make_experiment(algorithm, X_train, y_train, X_test, y_test, settings, mlflow):
     
@@ -19,3 +20,5 @@ def make_experiment(algorithm, X_train, y_train, X_test, y_test, settings, mlflo
         experiment_dmkde(X_train, y_train, X_test, y_test, settings, mlflow)
     if algorithm == "dmkde_sgd":
         experiment_dmkde_sgd(X_train, y_train, X_test, y_test, settings, mlflow)
+    if algorithm == "lake":
+        experiment_lake(X_train, y_train, X_test, y_test, settings, mlflow)
