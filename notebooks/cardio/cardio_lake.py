@@ -31,7 +31,7 @@ import torch
 
 
 setting = {
-    "z_name_of_experiment": 'lake-cardio2',
+    "z_name_of_experiment": 'lake-cardio75',
     "z_run_name": "lake",
     "z_dataset": "cardio", 
     "z_select_best_experiment": True,
@@ -41,7 +41,7 @@ setting = {
 }
 
 prod_settings = {
-    "z_ratio": [i/100 for i in range(70,90)]
+    "z_ratio": [0.75]
 }
 
 params_int = ["z_batch_size","z_iter_per_epoch"]
