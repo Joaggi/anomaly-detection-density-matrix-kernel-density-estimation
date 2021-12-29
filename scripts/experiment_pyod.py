@@ -1,7 +1,7 @@
 from pyod.models.knn import KNN
 from pyod.models.sos import SOS
 from pyod.models.copod import COPOD
-from pyod.models.xgbod import XGBOD
+from pyod.models.loda import LODA
 from pyod.models.vae import VAE
 from pyod.models.deep_svdd import DeepSVDD
 
@@ -27,11 +27,13 @@ def experiment_pyod(X_train, y_train, X_test, y_test, settings, mlflow):
             if (setting["z_run_name"] == "pyod-copod"):
                 model = COPOD(contamination=setting["z_nu"])
 
-            if (setting["z_run_name"] == "pyod-xgbod"):
-                model = XGBOD(contamination=setting["z_nu"], random_state=setting["z_random_state"])
+            if (setting["z_run_name"] == "pyod-loda"):
+                model = LODA(contamination=setting["z_nu"], n_bins='auto')
 
             if (setting["z_run_name"] == "pyod-vae"):
-                model = VAE(contamination=setting["z_nu"], random_state=setting["z_random_state"],
+                model = VAE(encoder_neurons=[X_train.shape[0], 64, 32, 16],
+                            decoder_neurons=[16, 32, 64, X_train.shape[0]],
+                            contamination=setting["z_nu"], random_state=setting["z_random_state"],
                             batch_size=setting["z_batch_size"], epochs=setting["z_epochs"], verbose=0)
 
             if (setting["z_run_name"] == "pyod-deepsvdd"):
@@ -39,11 +41,7 @@ def experiment_pyod(X_train, y_train, X_test, y_test, settings, mlflow):
                                  epochs=setting["z_epochs"], verbose=0)
 
 
-            if (setting["z_run_name"] == "pyod-xgbod"):
-                model.fit(X_train, y_train)
-            else:
-                model.fit(X_train)
-
+            model.fit(X_train)
 
             y_test_pred = model.predict(X_test)
 

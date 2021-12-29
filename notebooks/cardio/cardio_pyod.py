@@ -35,7 +35,8 @@ import pandas as pd # data processing, CSV file I/O (e.g. pd.read_csv)
 
 from experiments import experiments
 
-algorithms = ["knn", "sos", "copod", "xgbod", "vae", "deepsvdd"]
+#algorithms = ["knn", "sos", "copod", "loda", "vae", "deepsvdd"]
+algorithms = ["loda"]
 
 for algorithm in algorithms:
 
@@ -59,11 +60,10 @@ for algorithm in algorithms:
         prod_settings = {"z_nu": [i/50 for i in range(1,21)]}
         params_int = []
         params_float = ["z_nu"]
-    elif algorithm == "xgbod":
-        prod_settings = {"z_nu": [i/50 for i in range(1,21)], "z_n_estimators": [20*i for i in range(1,6)]}
-        setting.update(z_learning_rate = 0.05)
-        params_int = ["z_n_estimators"]
-        params_float = ["z_nu", "z_learning_rate"]
+    elif algorithm == "loda":
+        prod_settings = {"z_nu": [i/100 for i in range(1,21)]}
+        params_int = []
+        params_float = ["z_nu"]
     elif algorithm == "vae":
         prod_settings = {"z_nu": [i/50 for i in range(1,21)]}
         setting.update(z_batch_size = 16, z_epochs = 80)
