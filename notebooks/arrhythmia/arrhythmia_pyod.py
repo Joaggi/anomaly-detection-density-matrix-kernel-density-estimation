@@ -36,12 +36,11 @@ import pandas as pd # data processing, CSV file I/O (e.g. pd.read_csv)
 from experiments import experiments
 
 algorithms = ["knn", "sos", "copod", "loda", "vae", "deepsvdd"]
-algorithms = ["loda"]
 
 for algorithm in algorithms:
 
     setting = {
-        "z_name_of_experiment": ("pyod-"+algorithm+'-arrhythmia2'),
+        "z_name_of_experiment": ("pyod-"+algorithm+'-arrhythmia'),
         "z_run_name": ("pyod-"+algorithm),
         "z_dataset": "arrhythmia",
         "z_select_best_experiment": True

@@ -35,8 +35,7 @@ import pandas as pd # data processing, CSV file I/O (e.g. pd.read_csv)
 
 from experiments import experiments
 
-#algorithms = ["knn", "sos", "copod", "loda", "vae", "deepsvdd"]
-algorithms = ["loda"]
+algorithms = ["knn", "sos", "copod", "loda", "vae", "deepsvdd"]
 
 for algorithm in algorithms:
 
