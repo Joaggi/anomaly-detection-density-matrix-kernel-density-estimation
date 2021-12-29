@@ -7,11 +7,16 @@ from calculate_metrics import calculate_metrics
 from find_best_threshold import find_best_threshold
 from calculate_eigs import calculate_eigs
 
+import tensorflow as tf
+
+np.random.seed(42)
+tf.random.set_seed(42)
+
 
 def experiment_dmkde_sgd(X_train, y_train, X_test, y_test, settings, mlflow):
 
     for i, setting in enumerate(settings):
-        #print(f"experiment_dmkdc {i} threshold {setting['z_threshold']}")
+        
         with mlflow.start_run(run_name=setting["z_run_name"]):
 
             optimizer = tf.keras.optimizers.Adam(learning_rate=setting["z_learning_rate"])
@@ -42,5 +47,5 @@ def experiment_dmkde_sgd(X_train, y_train, X_test, y_test, settings, mlflow):
             mlflow.log_params(setting)
             mlflow.log_metrics(metrics)
 
-            print(f"experiment_dmkdc {i} metrics {metrics}")
-            print(f"experiment_dmkdc {i} threshold {setting['z_threshold']}")
+            print(f"experiment_dmkde_sgd {i} metrics {metrics}")
+            print(f"experiment_dmkde_sgd {i} threshold {setting['z_threshold']}")

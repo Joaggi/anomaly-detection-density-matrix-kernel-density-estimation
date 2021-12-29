@@ -14,7 +14,7 @@ def load_cardio(path, setting):
     if (algorithm == "oneclass" or algorithm == "isolation" or algorithm == "covariance" or algorithm == "localoutlier"):
         for el in labels:
             y.append(1 if el==pos_label else -1)
-    elif (algorithm == "dmkde" or algorithm == "dmkde_sgd" or algorithm == "lake"):
+    elif (algorithm == "dmkde" or algorithm == "dmkde_sgd" or algorithm == "lake" or algorithm.startswith("pyod")):
         for el in labels:
             y.append(0 if el==pos_label else 1)
 

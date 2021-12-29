@@ -6,6 +6,9 @@ from experiment_isolation import experiment_isolation
 from experiment_covariance import experiment_covariance
 from experiment_lake import experiment_lake
 
+# Uncomment the following line when running a Pyod notebook
+from experiment_pyod import experiment_pyod
+
 def make_experiment(algorithm, X_train, y_train, X_test, y_test, settings, mlflow):
     
     if algorithm == "oneclass":
@@ -22,3 +25,5 @@ def make_experiment(algorithm, X_train, y_train, X_test, y_test, settings, mlflo
         experiment_dmkde_sgd(X_train, y_train, X_test, y_test, settings, mlflow)
     if algorithm == "lake":
         experiment_lake(X_train, y_train, X_test, y_test, settings, mlflow)
+    if algorithm.startswith("pyod"):
+        experiment_pyod(X_train, y_train, X_test, y_test, settings, mlflow)

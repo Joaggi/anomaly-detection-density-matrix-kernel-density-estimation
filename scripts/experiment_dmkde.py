@@ -5,11 +5,16 @@ import numpy as np
 from calculate_metrics import calculate_metrics
 from find_best_threshold import find_best_threshold
 
+import tensorflow as tf
+
+np.random.seed(42)
+tf.random.set_seed(42)
+
 
 def experiment_dmkde(X_train, y_train, X_test, y_test, settings, mlflow):
 
     for i, setting in enumerate(settings):
-        #print(f"experiment_dmkdc {i} threshold {setting['z_threshold']}")
+        
         with mlflow.start_run(run_name=setting["z_run_name"]):
 
             fm_x = layers.QFeatureMapRFF(X_train.shape[1], dim=setting["z_rff_components"], 
@@ -20,7 +25,6 @@ def experiment_dmkde(X_train, y_train, X_test, y_test, settings, mlflow):
             X = []
             for i in range(len(y_train)):
                 if y_train[i] == 0: X.append(X_train[i])
-            print(len(X))
             
             qmd.fit(np.array(X), epochs=1, batch_size=setting["z_batch_size"], verbose=0)
             
@@ -36,5 +40,5 @@ def experiment_dmkde(X_train, y_train, X_test, y_test, settings, mlflow):
             mlflow.log_params(setting)
             mlflow.log_metrics(metrics)
 
-            print(f"experiment_dmkdc {i} metrics {metrics}")
-            print(f"experiment_dmkdc {i} threshold {setting['z_threshold']}")
+            print(f"experiment_dmkde {i} metrics {metrics}")
+            print(f"experiment_dmkde {i} threshold {setting['z_threshold']}")
