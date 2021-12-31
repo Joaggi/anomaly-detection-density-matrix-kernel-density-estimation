@@ -36,7 +36,7 @@ import pandas as pd # data processing, CSV file I/O (e.g. pd.read_csv)
 from experiments import experiments
 
 #algorithms = ["knn", "sos", "copod", "loda", "vae", "deepsvdd"]
-algorithms = ["copod", "loda", "vae", "deepsvdd"]
+algorithms = ["vae", "sos"]
 
 for algorithm in algorithms:
 
@@ -52,8 +52,8 @@ for algorithm in algorithms:
         params_int = ["z_n_neighbors"]
         params_float = ["z_nu"]
     elif algorithm == "sos":
-        prod_settings = {"z_nu": [i/25 for i in range(1,11)], "z_perplexity" : [0.1*i for i in range(1,11)]}
-        setting.update(z_tol = 1e-5)
+        prod_settings = {"z_nu": [0.08, 0.16, 0.32], "z_perplexity" : [0.1, 0.5, 1.0]}
+        setting.update(z_tol = 1e-4)
         params_int = []
         params_float = ["z_perplexity", "z_nu", "z_tol"]
     elif algorithm == "copod":
@@ -65,8 +65,8 @@ for algorithm in algorithms:
         params_int = []
         params_float = ["z_nu"]
     elif algorithm == "vae":
-        prod_settings = {"z_nu": [i/50 for i in range(1,21)]}
-        setting.update(z_batch_size = 16, z_epochs = 80)
+        prod_settings = {"z_nu": [i/25 for i in range(1,11)]}
+        setting.update(z_batch_size = 16, z_epochs = 60)
         params_int = ["z_batch_size", "z_epochs"]
         params_float = ["z_nu"] 
     elif algorithm == "deepsvdd":

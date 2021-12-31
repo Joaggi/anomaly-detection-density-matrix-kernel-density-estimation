@@ -7,6 +7,7 @@ from experiment_covariance import experiment_covariance
 from experiment_lake import experiment_lake
 
 # Uncomment the following line when running a Pyod notebook
+# Keep it commented otherwise
 from experiment_pyod import experiment_pyod
 
 def make_experiment(algorithm, X_train, y_train, X_test, y_test, settings, mlflow):
