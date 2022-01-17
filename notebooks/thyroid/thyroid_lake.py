@@ -31,7 +31,7 @@ import torch
 
 
 setting = {
-    "z_name_of_experiment": 'lake-thyroid97',
+    "z_name_of_experiment": 'lake-thyroid9',
     "z_run_name": "lake",
     "z_dataset": "thyroid", 
     "z_select_best_experiment": True,
@@ -41,7 +41,7 @@ setting = {
 }
 
 prod_settings = {
-    "z_ratio": [0.9743]
+    "z_ratio": [0.95, 0.96, 0.97, 0.98, 0.99]
 }
 
 params_int = ["z_batch_size","z_iter_per_epoch"]
