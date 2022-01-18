@@ -31,7 +31,7 @@ import torch
 
 
 setting = {
-    "z_name_of_experiment": 'lake-spambase80',
+    "z_name_of_experiment": 'lake-spambase8',
     "z_run_name": "lake",
     "z_dataset": "spambase", 
     "z_select_best_experiment": True,
@@ -41,7 +41,7 @@ setting = {
 }
 
 prod_settings = {
-    "z_ratio": [0.80]
+    "z_ratio": [i/100 for i in range(75,86)]
 }
 
 params_int = ["z_batch_size","z_iter_per_epoch"]
