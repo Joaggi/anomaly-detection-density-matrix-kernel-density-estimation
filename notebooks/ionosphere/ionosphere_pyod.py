@@ -40,41 +40,41 @@ algorithms = ["knn", "sos", "copod", "loda", "vae", "deepsvdd"]
 for algorithm in algorithms:
 
     setting = {
-        "z_name_of_experiment": ("pyod-"+algorithm+'-glass'),
+        "z_name_of_experiment": ("pyod-"+algorithm+'-ionosphere'),
         "z_run_name": ("pyod-"+algorithm),
-        "z_dataset": "glass",
+        "z_dataset": "ionosphere",
         "z_select_best_experiment": True
     }    
 
     if algorithm == "knn":
-        prod_settings = {"z_nu": [i/50 for i in range(1,21)], "z_n_neighbors" : [10*i for i in range(1,11)]}
+        prod_settings = {"z_nu": [i/50 for i in range(5,23)], "z_n_neighbors" : [10*i for i in range(1,11)]}
         params_int = ["z_n_neighbors"]
         params_float = ["z_nu"]
     elif algorithm == "sos":
-        prod_settings = {"z_nu": [i/50 for i in range(1,21)], "z_perplexity" : [10.0*i for i in range(1,11)]}
+        prod_settings = {"z_nu": [i/50 for i in range(5,23)], "z_perplexity" : [10.0*i for i in range(1,11)]}
         setting.update(z_tol = 1e-5)
         params_int = []
         params_float = ["z_perplexity", "z_nu", "z_tol"]
     elif algorithm == "copod":
-        prod_settings = {"z_nu": [i/50 for i in range(1,21)]}
+        prod_settings = {"z_nu": [i/50 for i in range(5,23)]}
         params_int = []
         params_float = ["z_nu"]
     elif algorithm == "loda":
-        prod_settings = {"z_nu": [i/100 for i in range(1,21)]}
+        prod_settings = {"z_nu": [i/100 for i in range(10,46)]}
         params_int = []
         params_float = ["z_nu"]
     elif algorithm == "vae":
-        prod_settings = {"z_nu": [i/50 for i in range(1,21)]}
+        prod_settings = {"z_nu": [i/50 for i in range(5,23)]}
         setting.update(z_batch_size = 16, z_epochs = 80)
         params_int = ["z_batch_size", "z_epochs"]
         params_float = ["z_nu"] 
     elif algorithm == "deepsvdd":
-        prod_settings = {"z_nu": [i/100 for i in range(1,31)]}
+        prod_settings = {"z_nu": [i/100 for i in range(10,46)]}
         setting.update(z_epochs = 0)
         params_int = ["z_epochs"]
         params_float = ["z_nu"]   
     else:
-        prod_settings = {"z_nu": 0.10}
+        prod_settings = {"z_nu": 0.30}
         params_int = []
         params_float = ["z_nu"]
 

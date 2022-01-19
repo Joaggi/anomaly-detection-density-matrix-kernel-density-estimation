@@ -1,7 +1,7 @@
 import scipy.io
 from sklearn.model_selection import train_test_split
 
-def load_arrhythmia(path, setting):
+def load_mat_file(path, setting):
 
     data = scipy.io.loadmat(path)
     features = data["X"]
