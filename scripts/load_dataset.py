@@ -21,3 +21,5 @@ def load_dataset(dataset, setting):
         return load_mat_file("data/glass.mat", setting)
     if(dataset == "ionosphere"):
         return load_mat_file("data/ionosphere.mat", setting)
+    if(dataset == "letter"):
+        return load_mat_file("data/letter.mat", setting)
