@@ -25,3 +25,5 @@ def load_dataset(dataset, setting):
         return load_mat_file("data/letter.mat", setting)
     if(dataset == "mnist"):
         return load_mat_file("data/mnist.mat", setting)
+    if(dataset == "musk"):
+        return load_mat_file("data/musk.mat", setting)
