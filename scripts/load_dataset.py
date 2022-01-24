@@ -27,3 +27,5 @@ def load_dataset(dataset, setting):
         return load_mat_file("data/mnist.mat", setting)
     if(dataset == "musk"):
         return load_mat_file("data/musk.mat", setting)
+    if(dataset == "optdigits"):
+        return load_mat_file("data/optdigits.mat", setting)
