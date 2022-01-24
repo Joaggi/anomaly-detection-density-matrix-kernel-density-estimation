@@ -47,24 +47,24 @@ for algorithm in algorithms:
     }    
 
     if algorithm == "knn":
-        prod_settings = {"z_nu": [i/100 for i in range(1,21)], "z_n_neighbors" : [10*i for i in range(1,11)]}
+        prod_settings = {"z_nu": [i/50 for i in range(1,21)], "z_n_neighbors" : [10*i for i in range(1,11)]}
         params_int = ["z_n_neighbors"]
         params_float = ["z_nu"]
     elif algorithm == "sos":
-        prod_settings = {"z_nu": [i/100 for i in range(1,21)], "z_perplexity" : [10.0*i for i in range(1,11)]}
+        prod_settings = {"z_nu": [i/50 for i in range(1,21)], "z_perplexity" : [10.0*i for i in range(1,11)]}
         setting.update(z_tol = 1e-5)
         params_int = []
         params_float = ["z_perplexity", "z_nu", "z_tol"]
     elif algorithm == "copod":
-        prod_settings = {"z_nu": [i/100 for i in range(1,21)]}
+        prod_settings = {"z_nu": [i/50 for i in range(1,21)]}
         params_int = []
         params_float = ["z_nu"]
     elif algorithm == "loda":
-        prod_settings = {"z_nu": [i/100 for i in range(1,21)]}
+        prod_settings = {"z_nu": [i/100 for i in range(1,31)]}
         params_int = []
         params_float = ["z_nu"]
     elif algorithm == "vae":
-        prod_settings = {"z_nu": [i/100 for i in range(1,21)]}
+        prod_settings = {"z_nu": [i/50 for i in range(1,21)]}
         setting.update(z_batch_size = 16, z_epochs = 80)
         params_int = ["z_batch_size", "z_epochs"]
         params_float = ["z_nu"] 
