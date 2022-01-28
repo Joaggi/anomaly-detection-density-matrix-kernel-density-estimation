@@ -29,3 +29,5 @@ def load_dataset(dataset, setting):
         return load_mat_file("data/musk.mat", setting)
     if(dataset == "optdigits"):
         return load_mat_file("data/optdigits.mat", setting)
+    if(dataset == "pendigits"):
+        return load_mat_file("data/pendigits.mat", setting)
