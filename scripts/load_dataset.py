@@ -31,3 +31,5 @@ def load_dataset(dataset, setting):
         return load_mat_file("data/optdigits.mat", setting)
     if(dataset == "pendigits"):
         return load_mat_file("data/pendigits.mat", setting)
+    if(dataset == "pima"):
+        return load_mat_file("data/pima.mat", setting)
