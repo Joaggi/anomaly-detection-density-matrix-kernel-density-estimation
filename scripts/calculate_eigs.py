@@ -19,8 +19,8 @@ def calculate_eigs(X_train, setting, i):
     opt_num_eigs = ( (np.asarray(eig_vals)) > 0.005 ).sum()
 
     if opt_num_eigs > 10:
-        print(f"experiment_dmkdc {i} num_eigs {opt_num_eigs}")    
+        print(f"experiment_dmkde_sgd {i} num_eigs {opt_num_eigs}")    
         return (rho, opt_num_eigs)
     else:
-        print(f"experiment_dmkdc {i} num_eigs default {10}")    
+        print(f"experiment_dmkde_sgd {i} num_eigs default {10}")    
         return (rho, 10)
