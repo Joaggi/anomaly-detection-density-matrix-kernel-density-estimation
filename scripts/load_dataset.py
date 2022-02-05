@@ -3,6 +3,7 @@ from load_cardio import load_cardio
 from load_kdd import load_kdd
 from load_spambase import load_spambase
 from load_thyroid import load_thyroid
+from load_shuttle import load_shuttle
 
 
 def load_dataset(dataset, setting):
@@ -17,6 +18,8 @@ def load_dataset(dataset, setting):
         return load_thyroid("data/Thyroid.npy", setting)
     if(dataset == "kddcup"):
         return load_kdd("data/kdd_cup.npz", setting)
+    if(dataset == "shuttle"):
+        return load_shuttle("data/shuttle.mat", setting)
     if(dataset == "glass"):
         return load_mat_file("data/glass.mat", setting)
     if(dataset == "ionosphere"):
