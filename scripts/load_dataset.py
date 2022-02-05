@@ -37,3 +37,5 @@ def load_dataset(dataset, setting):
         return load_mat_file("data/pima.mat", setting)
     if(dataset == "satellite"):
         return load_mat_file("data/satellite.mat", setting)
+    if(dataset == "satimage"):
+        return load_mat_file("data/satimage-2.mat", setting)
