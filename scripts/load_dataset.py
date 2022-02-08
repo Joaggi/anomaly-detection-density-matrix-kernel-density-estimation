@@ -44,3 +44,5 @@ def load_dataset(dataset, setting):
         return load_mat_file("data/satimage-2.mat", setting)
     if(dataset == "vertebral"):
         return load_mat_file("data/vertebral.mat", setting)
+    if(dataset == "vowels"):
+        return load_mat_file("data/vowels.mat", setting)
