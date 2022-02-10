@@ -46,3 +46,5 @@ def load_dataset(dataset, setting):
         return load_mat_file("data/vertebral.mat", setting)
     if(dataset == "vowels"):
         return load_mat_file("data/vowels.mat", setting)
+    if(dataset == "wbc"):
+        return load_mat_file("data/wbc.mat", setting)
