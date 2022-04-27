@@ -13,7 +13,7 @@ def experiments(setting, prod_settings, params_int, params_float, mlflow):
     dataset = setting["z_dataset"]
     name_of_experiment = setting["z_name_of_experiment"]
 
-    X_train, y_train, X_test, y_test = load_dataset(dataset, setting)
+    X_train, y_train, X_test, y_test = load_dataset(dataset, algorithm)
 
     X_train, X_val, y_train, y_val = train_test_split(X_train, y_train, test_size=0.3, random_state=42, stratify=y_train)
 

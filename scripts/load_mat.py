@@ -1,14 +1,13 @@
 import scipy.io
 from sklearn.model_selection import train_test_split
 
-def load_mat_file(path, setting):
+def load_mat_file(path, algorithm):
 
     data = scipy.io.loadmat(path)
     features = data["X"]
     labels = data["y"]
 
     pos_label = 0
-    algorithm = setting["z_run_name"]
 
     y = []
     if (algorithm == "oneclass" or algorithm == "isolation" or algorithm == "covariance" or algorithm == "localoutlier"):

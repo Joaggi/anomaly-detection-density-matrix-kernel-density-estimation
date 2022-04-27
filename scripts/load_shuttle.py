@@ -1,7 +1,7 @@
 import scipy.io
 from sklearn.model_selection import train_test_split
 
-def load_shuttle(path, setting):
+def load_shuttle(path, algorithm):
 
     data = scipy.io.loadmat(path)
     features = data["X"]
@@ -10,7 +10,6 @@ def load_shuttle(path, setting):
     _, sub_train, _, sub_labels = train_test_split(features, labels, test_size=5000, random_state=42, stratify=labels)
 
     pos_label = 0
-    algorithm = setting["z_run_name"]
 
     y = []
     if (algorithm == "oneclass" or algorithm == "isolation" or algorithm == "covariance" or algorithm == "localoutlier"):

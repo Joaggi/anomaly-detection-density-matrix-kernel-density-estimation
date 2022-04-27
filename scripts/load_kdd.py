@@ -1,7 +1,7 @@
 import numpy as np
 from sklearn.model_selection import train_test_split
 
-def load_kdd(path, setting):
+def load_kdd(path, algorithm):
 
     data = np.load(path, allow_pickle=True)
     features = data["kdd"][:,:-1]
@@ -10,7 +10,7 @@ def load_kdd(path, setting):
     _, sub_train, _, sub_test = train_test_split(features, labels, test_size=5000, random_state=42, stratify=labels)
 
     pos_label = 1
-    algorithm = setting["z_run_name"]
+   
     y = []
     if (algorithm == "oneclass" or algorithm == "isolation" or algorithm == "covariance" or algorithm == "localoutlier"):
         for el in sub_test:

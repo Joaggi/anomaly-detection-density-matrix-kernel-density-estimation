@@ -1,14 +1,13 @@
 import numpy as np
 from sklearn.model_selection import train_test_split
 
-def load_spambase(path, setting):
+def load_spambase(path, algorithm):
 
     data = np.load(path)
     features = data[:,:-1]
     labels = data[:,-1]
 
     pos_label = 1
-    algorithm = setting["z_run_name"]
 
     y = []
     if (algorithm == "oneclass" or algorithm == "isolation" or algorithm == "covariance" or algorithm == "localoutlier"):
