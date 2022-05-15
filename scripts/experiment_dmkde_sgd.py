@@ -13,7 +13,7 @@ np.random.seed(42)
 tf.random.set_seed(42)
 
 
-def experiment_dmkde_sgd(X_train, y_train, X_test, y_test, settings, mlflow):
+def experiment_dmkde_sgd(X_train, y_train, X_test, y_test, settings, mlflow, best=False):
 
     for i, setting in enumerate(settings):
         
@@ -46,6 +46,12 @@ def experiment_dmkde_sgd(X_train, y_train, X_test, y_test, settings, mlflow):
 
             mlflow.log_params(setting)
             mlflow.log_metrics(metrics)
+
+            if best:
+                np.savetxt(('artifacts/'+setting["z_name_of_experiment"]+'-preds.csv'), preds, delimiter=',')
+                mlflow.log_artifact(('artifacts/'+setting["z_name_of_experiment"]+'-preds.csv'))
+                np.savetxt(('artifacts/'+setting["z_name_of_experiment"]+'-scores.csv'), y_test_pred, delimiter=',')
+                mlflow.log_artifact(('artifacts/'+setting["z_name_of_experiment"]+'-scores.csv'))
 
             print(f"experiment_dmkde_sgd {i} metrics {metrics}")
             print(f"experiment_dmkde_sgd {i} threshold {setting['z_threshold']}")

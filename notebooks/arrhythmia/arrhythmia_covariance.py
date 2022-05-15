@@ -34,7 +34,7 @@ import pandas as pd # data processing, CSV file I/O (e.g. pd.read_csv)
 from experiments import experiments
 
 setting = {
-    "z_name_of_experiment": 'covariance-arrhythmia1',
+    "z_name_of_experiment": 'covariance-arrhythmia',
     "z_run_name": "covariance",
     "z_dataset": "arrhythmia", 
     "z_select_best_experiment": True

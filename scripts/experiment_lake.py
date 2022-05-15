@@ -118,7 +118,7 @@ def relative_euclidean_distance(a, b):
     return (a-b).norm(2, dim=1) / a.norm(2, dim=1)
 
 
-def experiment_lake(X_train, y_train, X_test, y_test, settings, mlflow):
+def experiment_lake(X_train, y_train, X_test, y_test, settings, mlflow, best=False):
 
     for i, setting in enumerate(settings):
         #print(f"experiment_dmkdc {i} threshold {setting['z_threshold']}")
@@ -182,10 +182,16 @@ def experiment_lake(X_train, y_train, X_test, y_test, settings, mlflow):
             pred = (test_score < thresh).astype(int)
             gt = test_labels.astype(int)
 
-            metrics = calculate_metrics(gt, pred)
+            metrics = calculate_metrics(gt, pred, test_score, setting["z_run_name"])
 
             mlflow.log_params(setting)
             mlflow.log_metrics(metrics)
 
-            print(f"experiment_dmkdc {i} ratio {setting['z_ratio']}")
-            print(f"experiment_dmkdc {i} metrics {metrics}")
+            if best:
+                np.savetxt(('artifacts/'+setting["z_name_of_experiment"]+'-preds.csv'), pred, delimiter=',')
+                mlflow.log_artifact(('artifacts/'+setting["z_name_of_experiment"]+'-preds.csv'))
+                np.savetxt(('artifacts/'+setting["z_name_of_experiment"]+'-scores.csv'), test_score, delimiter=',')
+                mlflow.log_artifact(('artifacts/'+setting["z_name_of_experiment"]+'-scores.csv'))
+
+            print(f"experiment_lake {i} ratio {setting['z_ratio']}")
+            print(f"experiment_lake {i} metrics {metrics}")

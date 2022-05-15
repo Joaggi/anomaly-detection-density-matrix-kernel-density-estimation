@@ -3,9 +3,9 @@ from min_max_scaler import min_max_scaler
 from sklearn.model_selection import train_test_split
 from generate_product_dict import generate_product_dict, add_random_state_to_dict, generate_dict_with_random_state
 from get_best_val_experiment import get_best_val_experiment, convert_best_experiment_to_settings_test
-#from get_best_test_experiment_metric import get_best_test_experiment_metric
 from make_experiment import make_experiment
 import numpy as np
+
 
 def experiments(setting, prod_settings, params_int, params_float, mlflow):
 
@@ -44,4 +44,4 @@ def experiments(setting, prod_settings, params_int, params_float, mlflow):
 
         print("Best Experiment:") 
         make_experiment(algorithm, np.concatenate([X_train, X_val]), np.concatenate([y_train, y_val]), 
-                        X_test, y_test, settings_test, mlflow)
+                        X_test, y_test, settings_test, mlflow, best=True)
